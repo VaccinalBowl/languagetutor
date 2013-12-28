@@ -1,0 +1,25 @@
+{
+    "name": "Russian Builder",
+    "description": "Add on to look for new words that you may not know.",
+    "version": "0.1",
+    "permissions": ["tabs", "http://*/*", "https://*/*","file:///Users/jonathncummins/extensions/scan/html/dummypage.html"],
+    "browser_action": {
+	"default_title": "Search this page for Russian Words",
+	"default_icon": "icon.png"
+
+    },
+    "background": {
+	"scripts": ["scripts/background.js"]
+	
+    },
+    "content_scripts": [
+	{
+	    "matches": ["<all_urls>"],
+	    "js": ["scripts/content.js"]
+	}
+    ],
+    "manifest_version":2
+    
+    
+    
+}
