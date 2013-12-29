@@ -25,14 +25,17 @@ function clearSelection() {
 
 function process_user_input(text)
 {
-    clearSelection();    
-    words = text.split(/ /);
-    words.forEach(
-	function(entry) {
-	    console.log(entry);
-	}
-    );
+
+    clearSelection();
+    text=text.toLowerCase();
+    text=text.replace(/\u0301/g,"");
+    var re = /[^\u0301\-йцукенгшщзхъёэждлорпавыфячсмитьбю]+/;
+    words = text.split(re).filter(function(s, i, a) {
+	return a.indexOf(s) === i && s !== "" & s!=="-";
+    });;
+    console.log(words);
     chrome.runtime.sendMessage(words);    
+
 }
 
 
