@@ -1,0 +1,22 @@
+<h1>New Word</h1>
+<%= form_for :word ,url: words_path do |f| %>
+<% if @word.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@word.errors.count,"error")%> prohibited this word from being saved:</h2>
+  <ul>
+    <% @word.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<p>
+  <%= f.label :lexical_form %><br>
+  <%= f.text_field :lexical_form %>
+</p>
+
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+<%= link_to 'Back', words_path%>
