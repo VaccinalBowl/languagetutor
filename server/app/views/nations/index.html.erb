@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="utf-8"> 
+  </head>
+  <body id="body">
+    
+    <%= link_to 'New nation', new_nation_path %>
+    <%= link_to 'Mass Load', nations_massload_path %>
+    <table id="">
+      <tr id="1">
+	<th>Country</th>
+	<th>Simplified Chinese</th>
+	<th>Pinyin</th>
+	<th></th>
+	<th></th>
+	<th></th>
+      </tr>
+      
+      <% @nations.each do |nation| %>
+      <tr>
+	<td><%= nation.english %></td>
+	<td><%= nation.chinese %></td>
+	<td><%= nation.pinyin %></td>
+	<td><%= link_to 'Show', nation %></td>
+	<td><%= link_to 'Edit', edit_nation_path(nation) %></td>
+	<td><%= link_to 'Destroy', nation_path(nation),
+                method: :delete, data: { confirm: 'Are you sure?' } %>
+      </tr>
+      <% end %>
+    </table>
+  </body>
+</html>

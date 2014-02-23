@@ -1,3 +1,9 @@
+<html>
+  <head>
+
+  </head>
+<body>
+
 <h1>New Word</h1>
 <%= form_for :word ,url: words_path do |f| %>
 <% if @word.errors.any? %>
@@ -12,7 +18,7 @@
 <% end %>
 <p>
   <%= f.label :lexical_form %><br>
-  <%= f.text_field :lexical_form %>
+  <%= f.text_field :lexical_form ,class: "keyboardInput" %>
 </p>
 
 <p>
@@ -20,3 +26,6 @@
 </p>
 <% end %>
 <%= link_to 'Back', words_path%>
+
+</body>
+</html>
