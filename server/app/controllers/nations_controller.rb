@@ -23,16 +23,27 @@ class NationsController < ApplicationController
     
     redirect_to nations_path
   end
+  def edit
+    
+    @nation = Nation.find(params[:id])
+
+  end
   
+  def update
+    @nation = Nation.find(params[:id])
+    if @nation.update(params[:nation].permit(:english, :chinese,:pinyin))
+      redirect_to @nation
+    else
+      render 'edit'
+    end
+  end
+
   def masscreate
     ps = params.require(:nation).permit(:records);
     records =  ps["records"]
     records.each_line do |nation| 
       nation.chomp!
       cols = nation.split(',')
-      puts cols[0]
-      puts cols[1]
-      puts cols[2]
       nations = Hash.new
       nations["english"] = cols[0]
       nations["chinese"] = cols[1]
@@ -43,7 +54,12 @@ class NationsController < ApplicationController
     redirect_to nations_path
   
   end
-
+  
+  def deleteall
+    @nations = Nation.all
+    @nations.each { |nation| nation.destroy }
+    redirect_to nations_path
+  end
   
   private
   def post_params
