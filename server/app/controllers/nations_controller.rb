@@ -1,6 +1,8 @@
 class NationsController < ApplicationController
   def index
     @nations = Nation.all
+    puts current_user
+    puts "gay"
   end
   
   def new

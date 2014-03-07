@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224123733) do
+ActiveRecord::Schema.define(version: 20140305214831) do
+
+  create_table "courses", force: true do |t|
+    t.string   "title"
+    t.string   "language"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "courses_users", force: true do |t|
+    t.integer "user_id"
+    t.integer "course_id"
+  end
 
   create_table "nations", force: true do |t|
     t.string   "english"
@@ -40,7 +52,10 @@ ActiveRecord::Schema.define(version: 20140224123733) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "words", force: true do |t|
-    t.string   "lexical_form"
+    t.string   "english"
+    t.string   "chinese"
+    t.string   "pinyin"
+    t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

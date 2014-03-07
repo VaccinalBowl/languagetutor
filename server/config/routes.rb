@@ -1,17 +1,23 @@
 Server::Application.routes.draw do
   devise_for :users
   #get "nations/index"
-  # get "country/index"
+  #get "country/index"
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  get "nations/massload"
-  get "nations/deleteall"
-  post "nations/masscreate"
   
-  resources :nations
+  # You can have the root of your site routed with "root"
+  #get "words/massload"
+  #get "words/deleteall"
+  #post "words/masscreate"
+  
+  #resources :nations
+
+  resources :courses do 
+    resources :words
+  end
+  #resources :chinesecourse
+
   #resources :countries
   root 'welcome#index'
 

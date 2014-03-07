@@ -3,12 +3,9 @@ class WordsController < ApplicationController
     @word = Word.new
   end
   def create
-    @word = Word.new(word_params)
-    if @word.save
-      redirect_to @word
-    else
-      render 'new'
-    end
+    @course = Course.find(params[:course_id])
+    @word = @course.words.create(params[:word].permit(:english, :chinese,:pinyin))
+    redirect_to course_path(@course)
   end
   def show
     @word = Word.find(params[:id])
@@ -39,9 +36,10 @@ class WordsController < ApplicationController
 
   def destroy
     @word = Word.find(params[:id])
+    course_id = @word.course_id
     @word.destroy
     
-    redirect_to words_path
+    redirect_to course_path(course_id)
   end
   private 
   def word_params
