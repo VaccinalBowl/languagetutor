@@ -1,32 +1,31 @@
-<%= form_for @word, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :english, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :english, :class => 'text_field' %>
-    </div>
+<%= form_for :word, :html => { :class => 'form-horizontal' } do |f| %>
+<div class="control-group">
+  <%= f.label :english, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :english, :class => 'text_field' %>
   </div>
-  <div class="control-group">
-    <%= f.label :chinese, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :chinese, :class => 'text_field' %>
-    </div>
+</div>
+<div class="control-group">
+  <%= f.label :chinese, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :chinese, :class => 'text_field' %>
   </div>
-  <div class="control-group">
-    <%= f.label :pinyin, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :pinyin, :class => 'text_field' %>
-    </div>
+</div>
+<div class="control-group">
+  <%= f.label :pinyin, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :pinyin, :class => 'text_field' %>
   </div>
-  <div class="control-group">
-    <%= f.label :course_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :course_id, :class => 'text_field' %>
-    </div>
+</div>
+<div class="control-group">
+  <%= f.label :course_id, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :course_id, :class => 'text_field' %>
   </div>
-
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                words_path, :class => 'btn' %>
-  </div>
+</div>
+<div class="form-actions">
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+  course_path(@course), :class => 'btn' %>
+</div>
 <% end %>

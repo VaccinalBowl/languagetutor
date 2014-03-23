@@ -1,6 +1,7 @@
 class WordsController < ApplicationController
   def new
-    @word = Word.new
+    @course = Course.find(params[:course_id])
+    
   end
   def create
     @course = Course.find(params[:course_id])

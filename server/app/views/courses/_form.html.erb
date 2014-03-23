@@ -1,16 +1,24 @@
 <%= form_for @course, :html => { :class => 'form-horizontal' } do |f| %>
 <div class="control-group">
-  <%= f.label :title, :class => 'control-label' %>
+  <%= f.label :name, :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_field :title, :class => 'text_field' %>
+    <%= f.text_field :name, :class => 'text_field' %>
   </div>
 </div>
 <div class="control-group">
-  <%= f.label :language, :class => 'control-label' %>
+  <%= f.label :teaches, :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_field :language, :class => 'text_field' %>
+    <%= f.select :teaches, ['Chinese','English','French'] , class: 'select' %>
   </div>
 </div>
+<div class="control-group">
+  <%= f.label :for_speakers_of, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.select :for_speakers_of, ['Chinese','English','French'] , class: 'select' %>
+  </div>
+</div>
+
+
 
 <div class="form-actions">
   <%= f.submit nil, :class => 'btn btn-primary' %>

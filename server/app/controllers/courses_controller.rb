@@ -14,6 +14,7 @@ class CoursesController < ApplicationController
   
   def create
     @course = Course.new(post_params)
+    @course.created_by = current_user.email
     @course.save
     redirect_to @course
   end
@@ -31,7 +32,7 @@ class CoursesController < ApplicationController
 
   def update
     @course = Course.find(params[:id])
-    if @course.update(params[:course].permit(:language, :title))
+    if @course.update(params[:course].permit(:name, :teaches,:for_speakers_of))
       redirect_to @course
     else
       render 'edit'
@@ -40,7 +41,7 @@ class CoursesController < ApplicationController
 
   private
   def post_params
-    params.require(:course).permit(:language, :title)
+    params.require(:course).permit(:name, :teaches,:for_speakers_of)
   end
   
  
